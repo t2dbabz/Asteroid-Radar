@@ -1,4 +1,4 @@
-package com.udacity.asteroidradar.detail
+package com.udacity.asteroidradar.ui.detail
 
 
 import android.os.Bundle
@@ -12,7 +12,7 @@ import com.udacity.asteroidradar.databinding.FragmentDetailBinding
 
 class DetailFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View {
         val binding = FragmentDetailBinding.inflate(inflater)
         binding.lifecycleOwner = this
 
