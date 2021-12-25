@@ -22,6 +22,8 @@ class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
 
+    private lateinit var adapter: AsteroidAdapter
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
@@ -37,7 +39,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = AsteroidAdapter(AsteroidAdapter.OnClickListener{
+        adapter = AsteroidAdapter(AsteroidAdapter.OnClickListener{
             findNavController().navigate(MainFragmentDirections.actionShowDetail(it))
         })
 
@@ -54,6 +56,23 @@ class MainFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.show_week_asteroids -> {
+                viewModel.getWeekAsteroid().observe(viewLifecycleOwner, {
+                    adapter.submitList(it)
+                })
+            }
+            R.id.show_today_asteroids -> {
+                viewModel.getTodayAsteroids().observe(viewLifecycleOwner, {
+                    adapter.submitList(it)
+                })
+            }
+            R.id.show_all_asteroids -> {
+                viewModel.asteroids.observe(viewLifecycleOwner, {
+                    adapter.submitList(it)
+                })
+            }
+        }
         return true
     }
 }

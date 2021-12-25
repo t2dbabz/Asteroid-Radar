@@ -20,6 +20,9 @@ class AsteroidRepository(private val database: AsteroidsDatabase) {
         it.asDomainModel()
     }
 
+    fun getWeekAsteroids(startDate: String, endDate: String) = database.asteroidDao.getWeekAsteroids(startDate, endDate)
+
+    fun getTodayAsteroids(todayDate: String) = database.asteroidDao.getTodayAsteroids(todayDate)
 
     suspend fun refreshAsteroid(startDate: String, endDate: String, apiKey: String) {
         withContext(Dispatchers.IO) {
@@ -33,4 +36,6 @@ class AsteroidRepository(private val database: AsteroidsDatabase) {
             }
         }
     }
+
+    suspend fun getPictureOfTheDay(apiKey: String) = NasaApi.retrofitService.getImageOfTheDay(apiKey)
 }
