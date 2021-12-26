@@ -21,7 +21,7 @@ class RefreshAsteroidWork(appContext: Context, params: WorkerParameters): Corout
         val repository = AsteroidRepository(database)
 
         val startDate = getNextSevenDaysFormattedDates()[0]
-        val endDate = getNextSevenDaysFormattedDates()[6]
+        val endDate = getNextSevenDaysFormattedDates()[5]
 
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.DAY_OF_YEAR, -1)

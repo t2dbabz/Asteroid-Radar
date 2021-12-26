@@ -19,7 +19,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val asteroidRepository = AsteroidRepository(database)
 
     private val startDate = getNextSevenDaysFormattedDates()[0]
-    private val endDate = getNextSevenDaysFormattedDates()[6]
+    private val endDate = getNextSevenDaysFormattedDates()[5]
     private val weekEnd = getNextSevenDaysFormattedDates()[5]
 
 

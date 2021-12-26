@@ -11,35 +11,44 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 
-interface NasaApiService {
+interface AsteroidApiService {
     @GET("neo/rest/v1/feed")
     suspend fun getAsteroidProperties(
         @Query("start_date") startDate: String,
         @Query("end_date") endDate: String,
         @Query("api_key") apiKey: String
     ): String
+}
 
-
+interface PictureOfDayApiService {
     @GET("planetary/apod")
     suspend fun getImageOfTheDay(
         @Query("api_key") apiKey: String
     ): PictureOfDay
-
 }
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
 
-
-private val retrofit = Retrofit.Builder()
+private val retrofitAsteroid = Retrofit.Builder()
     .addConverterFactory(ScalarsConverterFactory.create())
+    .baseUrl(Constants.BASE_URL)
+    .build()
+
+object AsteroidApi {
+    val retrofitService: AsteroidApiService by lazy {
+        retrofitAsteroid.create(AsteroidApiService::class.java)
+    }
+}
+
+private val retrofitPictureOfDay = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .baseUrl(Constants.BASE_URL)
     .build()
 
-object NasaApi {
-    val retrofitService: NasaApiService by lazy {
-        retrofit.create(NasaApiService::class.java)
+object PictureOfDayApi {
+    val retrofitService: PictureOfDayApiService by lazy {
+        retrofitPictureOfDay.create(PictureOfDayApiService::class.java)
     }
 }
