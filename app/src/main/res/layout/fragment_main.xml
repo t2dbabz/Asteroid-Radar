@@ -38,10 +38,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:background="#55010613"
-                android:padding="16dp"
+                android:padding="@dimen/layout_padding"
                 android:text="@string/image_of_the_day"
                 style="@style/TextTitle"
-                android:textSize="20sp"
+                android:textSize="@dimen/text_size_20"
                 android:textStyle="bold" />
         </FrameLayout>
 

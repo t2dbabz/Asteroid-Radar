@@ -29,7 +29,7 @@
         <ScrollView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="16dp"
+            android:padding="@dimen/layout_padding"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activity_main_image_of_the_day">
@@ -54,7 +54,7 @@
                         android:id="@+id/close_approach_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="@dimen/layout_small"
                         android:text="@{viewModel.selectedAsteroid.closeApproachDate}"
                         style="@style/TextSubtitle"
                         tools:text="2020-02-01" />
@@ -63,7 +63,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/layout_margin"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -83,7 +83,7 @@
                             android:id="@+id/absolute_magnitude"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginTop="@dimen/layout_small"
                             style="@style/TextSubtitle"
                             app:astronomicalUnitText="@{viewModel.selectedAsteroid.absoluteMagnitude}"
                             tools:text="25.126 au" />
@@ -93,7 +93,7 @@
                         android:id="@+id/help_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="16dp"
+                        android:padding="@dimen/layout_margin"
                         android:contentDescription="@string/astronomical_unit_explanation_button"
                         app:srcCompat="@drawable/ic_help_circle" />
 
@@ -102,7 +102,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/layout_margin"
                     android:text="@string/estimated_diameter_title"
                     style="@style/TextTitle" />
 
@@ -110,7 +110,7 @@
                     android:id="@+id/estimated_diameter"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="@dimen/layout_small"
                     style="@style/TextSubtitle"
                     app:kmUnitText="@{viewModel.selectedAsteroid.estimatedDiameter}"
                     tools:text="0.82 km" />
@@ -118,7 +118,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/layout_margin"
                     android:text="@string/relative_velocity_title"
                     style="@style/TextTitle" />
 
@@ -126,7 +126,7 @@
                     android:id="@+id/relative_velocity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="@dimen/layout_small"
                     style="@style/TextSubtitle"
                     app:velocityText="@{viewModel.selectedAsteroid.relativeVelocity}"
                     tools:text="11.9 km/s" />
@@ -134,7 +134,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/layout_margin"
                     android:text="@string/distance_from_earth_title"
                     style="@style/TextTitle"/>
 
@@ -142,7 +142,7 @@
                     android:id="@+id/distance_from_earth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="@dimen/layout_small"
                     style="@style/TextSubtitle"
                     app:astronomicalUnitText="@{viewModel.selectedAsteroid.distanceFromEarth}"
                     tools:text="0.0924 au" />
