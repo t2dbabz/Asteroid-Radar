@@ -13,7 +13,8 @@ import kotlinx.coroutines.launch
 import kotlin.Exception
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
-    enum class NasaApiStatus {LOADING, DONE, ERROR}
+    enum class NasaApiStatus { LOADING, DONE, ERROR }
+
     private val database = AsteroidsDatabase.getInstance(application)
     private val asteroidRepository = AsteroidRepository(database)
 
@@ -25,13 +26,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     var asteroids: LiveData<List<Asteroid>> = asteroidRepository.asteroids
 
     private val _status = MutableLiveData<NasaApiStatus>()
-    val status : LiveData<NasaApiStatus>
+    val status: LiveData<NasaApiStatus>
         get() = _status
 
 
     private val _pictureOfTheDay = MutableLiveData<PictureOfDay>()
-    val pictureOfTheDay : LiveData<PictureOfDay>
-    get() = _pictureOfTheDay
+    val pictureOfTheDay: LiveData<PictureOfDay>
+        get() = _pictureOfTheDay
 
 
     init {
@@ -39,25 +40,25 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun getRefreshAsteroid() {
-        viewModelScope.launch{
+        viewModelScope.launch {
             try {
                 asteroidRepository.refreshAsteroid(startDate, endDate, Constants.API_KEY)
                 getPictureOfTheDay()
-            }catch (e : Exception) {
+            } catch (e: Exception) {
 
             }
         }
     }
 
     fun getWeekAsteroid(): LiveData<List<Asteroid>> {
-         val weekAsteroid = Transformations.map(asteroidRepository.getWeekAsteroids(startDate, weekEnd)){
+        val weekAsteroid = Transformations.map(asteroidRepository.getWeekAsteroids(startDate, weekEnd)) {
             it.asDomainModel()
         }
         return weekAsteroid
     }
 
     fun getTodayAsteroids(): LiveData<List<Asteroid>> {
-        val todayAsteroids = Transformations.map(asteroidRepository.getTodayAsteroids(startDate)){
+        val todayAsteroids = Transformations.map(asteroidRepository.getTodayAsteroids(startDate)) {
             it.asDomainModel()
         }
         return todayAsteroids

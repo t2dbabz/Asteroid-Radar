@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="asteroid"
             type="com.udacity.asteroidradar.domain.Asteroid" />
@@ -12,35 +12,35 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@color/app_background"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/app_background">
 
         <TextView
             android:id="@+id/asteroid_name"
-            android:textColor="#ffffff"
+            style="@style/TextTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/layout_margin"
             android:layout_marginTop="@dimen/layout_margin"
-            style="@style/TextTitle"
+            android:text="@{asteroid.codename}"
+            android:textColor="#ffffff"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="@{asteroid.codename}"
             tools:text="465633 (2009 JR5)" />
 
         <TextView
             android:id="@+id/asteroid_date"
+            style="@style/TextSubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/layout_medium"
-            style="@style/TextSubtitle"
-            android:textSize="20sp"
             android:layout_marginBottom="@dimen/layout_medium"
+            android:text="@{asteroid.closeApproachDate}"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/asteroid_name"
             app:layout_constraintTop_toBottomOf="@+id/asteroid_name"
-            android:text="@{asteroid.closeApproachDate}"
             tools:text="2015-09-08" />
 
         <ImageView

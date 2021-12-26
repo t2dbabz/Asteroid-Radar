@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
-class AsteroidApplication: Application() {
+class AsteroidApplication : Application() {
 
     private val applicationScope = CoroutineScope(Dispatchers.Default)
 
@@ -36,7 +36,8 @@ class AsteroidApplication: Application() {
 
         val repeatingRequest = PeriodicWorkRequestBuilder<RefreshAsteroidWork>(
             1,
-            TimeUnit.DAYS)
+            TimeUnit.DAYS
+        )
             .setConstraints(constraints)
             .build()
 

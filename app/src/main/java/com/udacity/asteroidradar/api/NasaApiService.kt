@@ -23,7 +23,7 @@ interface NasaApiService {
     @GET("planetary/apod")
     suspend fun getImageOfTheDay(
         @Query("api_key") apiKey: String
-    ) : PictureOfDay
+    ): PictureOfDay
 
 }
 

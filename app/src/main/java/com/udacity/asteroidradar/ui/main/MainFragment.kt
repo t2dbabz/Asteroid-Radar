@@ -13,9 +13,8 @@ import com.udacity.asteroidradar.ui.main.MainViewModel.NasaApiStatus
 class MainFragment : Fragment() {
 
 
-
     private val viewModel: MainViewModel by lazy {
-        val activity = requireNotNull(this.activity){}
+        val activity = requireNotNull(this.activity) {}
 
         ViewModelProvider(this, MainViewModelFactory(activity.application)).get(MainViewModel::class.java)
     }
@@ -24,8 +23,10 @@ class MainFragment : Fragment() {
 
     private lateinit var adapter: AsteroidAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
 
@@ -39,7 +40,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = AsteroidAdapter(AsteroidAdapter.OnClickListener{
+        adapter = AsteroidAdapter(AsteroidAdapter.OnClickListener {
             findNavController().navigate(MainFragmentDirections.actionShowDetail(it))
         })
 
