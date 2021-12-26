@@ -24,6 +24,8 @@ class AsteroidRepository(private val database: AsteroidsDatabase) {
 
     fun getTodayAsteroids(todayDate: String) = database.asteroidDao.getTodayAsteroids(todayDate)
 
+    fun deletePreviousDayAsteroid(date: String) = database.asteroidDao.deletePreviousDayAsteroids(date)
+
     suspend fun refreshAsteroid(startDate: String, endDate: String, apiKey: String) {
         withContext(Dispatchers.IO) {
             try {
