@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextTitle" parent="TextAppearance.MaterialComponents.Headline5">
+       <item name="android:textColor">@color/default_text_color</item>
+    </style>
+
+    <style name="TextSubtitle" parent="TextTitle">
+        <item name="android:textSize">18sp</item>
+    </style>
+
 </resources>

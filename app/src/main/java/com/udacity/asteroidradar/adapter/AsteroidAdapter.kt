@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.databinding.AsteroidsListItemBinding
 import com.udacity.asteroidradar.domain.Asteroid
 
@@ -13,6 +14,11 @@ class AsteroidAdapter(val onClickListener: OnClickListener) : ListAdapter<Astero
     class AsteroidViewHolder(private val binding: AsteroidsListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(asteroid: Asteroid) {
             binding.asteroid = asteroid
+            if (asteroid.isPotentiallyHazardous) {
+                binding.asteroidStatusIcon.contentDescription = itemView.context.getString(R.string.potentially_hazardous_asteroid_icon)
+            } else {
+                binding.asteroidStatusIcon.contentDescription = itemView.context.getString(R.string.not_hazardous_asteroid_icon)
+            }
             binding.executePendingBindings()
         }
 

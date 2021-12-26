@@ -5,15 +5,22 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Picasso
 import com.udacity.asteroidradar.R
+import com.udacity.asteroidradar.domain.PictureOfDay
 
 
+@BindingAdapter("pictureOfDay")
+fun bindPictureOfDayImage(imageView: ImageView, pictureOfDay: PictureOfDay?) {
 
-@BindingAdapter("pictureOfDayImageUrl")
-fun bindPictureOfDayImage(imageView: ImageView, imageUrl: String? ) {
-    imageUrl?.let {
+    if (pictureOfDay?.mediaType == "image") {
         Picasso.with(imageView.context)
-            .load(imageUrl)
+            .load(pictureOfDay.url)
             .into(imageView)
+        imageView.contentDescription = imageView.context.getString(
+            R.string.nasa_picture_of_day_content_description_format,
+            pictureOfDay.title
+        )
+    } else {
+        imageView.contentDescription = imageView.context.getString(R.string.this_is_nasa_s_picture_of_day_showing_nothing_yet)
     }
 }
 
@@ -21,8 +28,10 @@ fun bindPictureOfDayImage(imageView: ImageView, imageUrl: String? ) {
 fun bindAsteroidStatusImage(imageView: ImageView, isHazardous: Boolean) {
     if (isHazardous) {
         imageView.setImageResource(R.drawable.ic_status_potentially_hazardous)
+        imageView.contentDescription = imageView.context.getString(R.string.potentially_hazardous_asteroid_icon)
     } else {
         imageView.setImageResource(R.drawable.ic_status_normal)
+        imageView.contentDescription = imageView.context.getString(R.string.not_hazardous_asteroid_icon)
     }
 }
 
@@ -30,8 +39,10 @@ fun bindAsteroidStatusImage(imageView: ImageView, isHazardous: Boolean) {
 fun bindDetailsStatusImage(imageView: ImageView, isHazardous: Boolean) {
     if (isHazardous) {
         imageView.setImageResource(R.drawable.asteroid_hazardous)
+        imageView.contentDescription = imageView.context.getString(R.string.potentially_hazardous_asteroid_image)
     } else {
         imageView.setImageResource(R.drawable.asteroid_safe)
+        imageView.contentDescription = imageView.context.getString(R.string.not_hazardous_asteroid_image)
     }
 }
 
