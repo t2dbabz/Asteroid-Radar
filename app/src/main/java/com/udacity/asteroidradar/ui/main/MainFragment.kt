@@ -3,12 +3,12 @@ package com.udacity.asteroidradar.ui.main
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.adapter.AsteroidAdapter
 import com.udacity.asteroidradar.databinding.FragmentMainBinding
+import com.udacity.asteroidradar.ui.main.MainViewModel.NasaApiStatus
 
 class MainFragment : Fragment() {
 
@@ -47,6 +47,26 @@ class MainFragment : Fragment() {
         viewModel.asteroids.observe(viewLifecycleOwner, {
             adapter.submitList(it)
         })
+
+        viewModel.status.observe(viewLifecycleOwner, { status ->
+            when (status) {
+                NasaApiStatus.LOADING -> {
+                    binding.apply {
+                        statusLoadingWheel.visibility = View.VISIBLE
+                    }
+                }
+
+                NasaApiStatus.DONE -> {
+                    binding.statusLoadingWheel.visibility = View.GONE
+                }
+
+                else -> {
+                    binding.statusLoadingWheel.visibility = View.GONE
+                    binding.activityMainImageOfTheDay.setImageResource(R.drawable.ic_broken_image)
+                }
+            }
+        })
+
     }
 
 

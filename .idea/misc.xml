@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/tunde/UdacityProjects/asteroid-radar-starter/app/src/main/res/drawable-v24/ic_broken_image.xml" value="0.2203125" />
         <entry key="..\:/Users/tunde/UdacityProjects/asteroid-radar-starter/app/src/main/res/drawable/ic_status_normal.xml" value="0.2203125" />
         <entry key="..\:/Users/tunde/UdacityProjects/asteroid-radar-starter/app/src/main/res/drawable/ic_status_potentially_hazardous.xml" value="0.2203125" />
         <entry key="..\:/Users/tunde/UdacityProjects/asteroid-radar-starter/app/src/main/res/drawable/placeholder_picture_of_day.xml" value="0.2203125" />

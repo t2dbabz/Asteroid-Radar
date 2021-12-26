@@ -3,11 +3,19 @@ package com.udacity.asteroidradar.adapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import com.udacity.asteroidradar.R
-import com.udacity.asteroidradar.domain.Asteroid
 
+
+
+@BindingAdapter("pictureOfDayImageUrl")
+fun bindPictureOfDayImage(imageView: ImageView, imageUrl: String? ) {
+    imageUrl?.let {
+        Picasso.with(imageView.context)
+            .load(imageUrl)
+            .into(imageView)
+    }
+}
 
 @BindingAdapter("statusIcon")
 fun bindAsteroidStatusImage(imageView: ImageView, isHazardous: Boolean) {
